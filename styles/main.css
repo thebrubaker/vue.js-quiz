@@ -1,0 +1,16 @@
+.correct {
+	background-color: green;
+}
+
+.incorrect {
+	background-color: red;
+}
+
+.answer {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.hide {
+	display: none;
+}

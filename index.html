@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Vue.js Quiz Test</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">	
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<div id="questions" class="container col-sm-6">
+		<h1>{{title}}</h1>
+		<h2>{{tagline}}</h2>
+		<ol>
+			<li v-repeat="questions" class="question question-{{id}}">
+				<div class="header-bg">
+					<p>{{text}}</p>
+				</div>
+				<ul id="answers" class="list-group">
+					<li v-repeat="options" v-on="click: checkAnswer(this)" v-class="correct : mark" class="list-group-item answer">{{text}}</li>
+				</ul>
+				<div class="panel panel-default" v-class="hide : correctResponse.hide">
+					<div class="correct-response panel-body">
+						<p>Correct!</p>
+						<p>{{{correctResponse.text}}}</p>
+					</div>
+				</div>
+				<div class="panel panel-default" v-class="hide : incorrectResponse.hide">
+					<div class="incorrect-response panel-body">
+						<p>Incorrect</p>
+						<p>{{{incorrectResponse.text}}}</p>
+					</div>
+				</div>
+			</li>
+		</ol>
+		<div class="panel panel-default result-{{id}}" v-repeat="results" v-class="hide : hide">
+			<div class="incorrect-response panel-body">
+				<p>You got {{ getScore() }} out of {{ countQuestions() }}</p>
+				<p>{{text}}</p>
+				<a href="{{facebook}}">Share on Facebook</a>
+				<span> | </span>
+				<a href="{{twitter}}">Share on Twitter</a>
+				v-text="results"
+			</div>
+		</div>
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.1/vue.min.js"></script>
+<script src="scripts/quiz.js"></script>
+</html>
